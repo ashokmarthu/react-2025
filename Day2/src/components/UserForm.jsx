@@ -1,27 +1,13 @@
-import React, { useState } from "react";
-
-const UserForm = () => {
-  const [userInput, setuserInput] = useState({
-    initialAmount: 1000,
-    annualInvestment: 1200,
-    expectedReturn: 6,
-    duration: 1,
-  });
-  const handleUserChange = (field, newValue) => {
-    setuserInput((prev) => ({
-      ...prev,
-      [field]: newValue,
-    }));
-  };
+const UserForm = ({ userInput, onUserChange }) => {
   return (
-    <div className="user-input">
+    <div id="user-input">
       <p>
         <label>
           <input
-            value={userInput.initialAmount}
+            value={userInput.initialInvestment}
             type="number"
             required
-            onChange={(e) => handleUserChange("initialAmount", e.target.value)}
+            onChange={(e) => onUserChange("initialInvestment", e.target.value)}
           />
           INITIAL AMOUNT
         </label>
@@ -32,9 +18,7 @@ const UserForm = () => {
             value={userInput.annualInvestment}
             type="number"
             required
-            onChange={(e) =>
-              handleUserChange("annualInvestment", e.target.value)
-            }
+            onChange={(e) => onUserChange("annualInvestment", e.target.value)}
           />
           ANNUAL INVESTMENT
         </label>
@@ -45,7 +29,7 @@ const UserForm = () => {
             value={userInput.expectedReturn}
             type="number"
             required
-            onChange={(e) => handleUserChange("expectedReturn", e.target.value)}
+            onChange={(e) => onUserChange("expectedReturn", e.target.value)}
           />
           EXPECTED RETURN
         </label>
@@ -56,7 +40,7 @@ const UserForm = () => {
             value={userInput.duration}
             type="number"
             required
-            onChange={(e) => handleUserChange("duration", e.target.value)}
+            onChange={(e) => onUserChange("duration", e.target.value)}
           />
           DURATION
         </label>
