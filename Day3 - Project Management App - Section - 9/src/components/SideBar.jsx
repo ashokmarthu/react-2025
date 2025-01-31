@@ -1,34 +1,41 @@
-const SideBar = ({ setOpenForm, tasks, setTaskIndex }) => {
+import Button from "./Button";
+
+const SideBar = ({
+  onStartAddProject,
+  projects,
+  onSelectProject,
+  selectedProjectId,
+}) => {
   return (
-    <aside className="bg-black min-h-screen z-10 rounded-tr-md text-white flex flex-col justify-start p-4 gap-2">
-      <div className="flex flex-col gap-6">
-        <strong className="text-xl">YOUR PROJECTS</strong>
-        <button
-          className="bg-slate-500 w-fit p-2 rounded-md gap-2 flex"
-          onClick={() => setOpenForm(true)}
-        >
-          <i>+</i>
-          Add Project
-        </button>
-      </div>
-      <hr class="border-gray-300 border-t-2 my-4" />
+    <aside className="w-1/3 px-8 py-16 bg-stone-900 text-stone-50 md:w-72 rounded-r-xl">
+      <h2 className="mb-8 font-bold uppercase md:text-xl text-stone-200">
+        Your Projects
+      </h2>
       <div>
-        {tasks.length ? (
-          <ul>
-            {tasks.map((task, index) => (
-              <li
-                key={task.title}
-                onClick={() => setTaskIndex(index )}
-                className="text-md"
-              >
-                {task.title}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          ""
-        )}
+        <Button onClick={onStartAddProject}>+ Add Project</Button>
       </div>
+      <hr className="border-gray-300 border-t-2 my-2" />
+      <ul className="mt-8">
+        {projects.map((project) => {
+          let cssClasess =
+            "w-full text-left px-2 py-1 rounded my-1 hover:bg-stone-800 truncate";
+          if (project.id === selectedProjectId) {
+            cssClasess += " bg-stone-800 text-stone-200";
+          } else {
+            cssClasess += " text-stone-400 ";
+          }
+          return (
+            <li key={project.id}>
+              <button
+                className={cssClasess}
+                onClick={() => onSelectProject(project.id)}
+              >
+                {project.title}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
     </aside>
   );
 };
