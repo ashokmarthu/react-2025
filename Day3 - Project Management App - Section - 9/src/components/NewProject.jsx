@@ -28,9 +28,11 @@ const NewProject = ({ onAdd, onCancel }) => {
   return (
     <>
       <Modal ref={modal} buttonCaption="Okay">
-        <h2>Invalid Input</h2>
-        <p>Oops.. looks like you forigot to enter a value.</p>
-        <p>
+        <h2 className="text-xl font-bold text-stone-500 my-4">Invalid Input</h2>
+        <p className="text-stone-400 mb-4">
+          Oops.. looks like you forigot to enter a value.
+        </p>
+        <p className="text-stone-400 mb-4">
           Please make sure you enter valid value for every field you entered
         </p>
       </Modal>
