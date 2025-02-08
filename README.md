@@ -42,3 +42,12 @@ S13:- React key pattern to avoid additional useffetc to rerender,
       React scheduling updates. always update state based on prevValues
 
 Million JS Package. react optimization
+
+
+React Life cycle Hooks Order
+constructor
+render
+componentDidMount()
+componentDidUpdate()
+componentWillUnMount()
+componentDidCatch()
