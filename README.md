@@ -51,3 +51,7 @@ componentDidMount()
 componentDidUpdate()
 componentWillUnMount()
 componentDidCatch()
+
+
+what is a side Effect
+Taks that don't Impact the current component render cycle
